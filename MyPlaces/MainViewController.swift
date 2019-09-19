@@ -31,11 +31,17 @@ class MainViewController: UITableViewController {
 
         cell.textLabel?.text = restaurantNames[indexPath.row]
         cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row]) //Присваиваем изображение - обращаемся к свойству imageView и его свойству image
-        
+        // делаем изображения круглыми
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2 // cкругляем сначала imageView
+        cell.imageView?.clipsToBounds = true //скругляем само изображение
         return cell
     }
  
-
+    // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
+    }
 
     /*
     // MARK: - Navigation
